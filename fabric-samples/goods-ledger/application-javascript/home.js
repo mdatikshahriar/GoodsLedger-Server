@@ -19,6 +19,10 @@ const walletPath = path.join(__dirname, 'wallet');
 const org1UserId = 'appUser';
 let contract = null;
 
+function prettyJSONString(inputString) {
+	return JSON.stringify(JSON.parse(inputString), null, 2);
+}
+
 // pre-requisites:
 // - fabric-sample two organization test-network setup with two peers, ordering service,
 //   and 2 certificate authorities
@@ -107,9 +111,9 @@ async function main() {
 			// Get the contract from the network.
 			contract = network.getContract(chaincodeName);
 
-		}  catch (error) {
-			console.error(`******** FAILED to run the application: ${error}`);
-		}
+		} catch (error) {
+            console.error(`******** FAILED to run the application: ${error}`);
+        }
 	} catch (error) {
 		console.error(`******** FAILED to run the application: ${error}`);
 	}
